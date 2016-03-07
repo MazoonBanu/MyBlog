@@ -1,0 +1,55 @@
+<div class="container">
+<div class="lead ">
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="http://www.megaicons.net/static/img/icons_sizes/368/1041/64/letter-m-icon.png">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= @question.email %></h4>
+    <%= @question.body %>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="row">
+  <div class="col-sm-8 col-sm-offset-2">
+<div>
+<button type="button"  class="btn btn-success btn-sm" data-toggle="modal" data-target="#new-answer-modal">submit your answer</button>
+</div>
+
+
+<%= render 'home/answer_form' %>
+
+<% @answers.each do |answer| %>
+
+
+<div class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="http://www.megaicons.net/static/img/icons_sizes/368/1041/64/letter-m-icon.png">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">   <%= answer.email %>      </h4>
+    <div>
+      <%= time_ago_in_words answer.created_at %> ago
+    </div>
+    <div>
+      <%= answer.body %>
+    </div>
+  </div>
+
+</div>
+
+<%end%>
+
+<% if @answers.empty? %>
+<div class="alert alert-info">nothing is here,be the first to answer.......</div>
+<% end %>
+
+</div>
+</div>
